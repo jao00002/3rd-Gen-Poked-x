@@ -5,19 +5,17 @@ import { useUser } from "../context/userContext";
 function Details({ route }) {
     const [users] = useUser();
 
-    //console.log("details");
+    //console.log(users);
 
-    let id = parseInt(route.params.id);
-    let fullURL = "https://pokeapi.co/api/v2/pokemon/" + id;
-    //let pokeMap = fetch(fullURL).then((res) => res.json());
-    //let map = pokeMap.map((item) => ({ ...item }));
-    //console.log(pokeMap);
+    let id = parseInt(route.params.id) - 1;
+    console.log(users.pokeDetails[id].id);
+
     return (
         <>
             <StatusBar barStyle="light-content" backgroundColor="red" />
             <View>
                 <Text>Details Screen</Text>
-                <Text>{route.params.id}</Text>
+                <Text>Pokemon ID: {users.pokeDetails[id].id}</Text>
                 <Text>{}</Text>
             </View>
         </>

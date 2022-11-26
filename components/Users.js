@@ -9,9 +9,11 @@ function Users({ navigation }) {
         return null;
     }
 
+    //console.log(users.pokemon);
+
     return (
         <FlatList
-            data={users}
+            data={users.pokemon}
             renderItem={({ item }) => (
                 <UserItem
                     user={item}

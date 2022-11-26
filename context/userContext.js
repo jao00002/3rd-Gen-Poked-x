@@ -6,6 +6,7 @@ function UserProvider(props) {
     const [pokemon, setPokemon] = React.useState();
     const [pokeDetails, setDetails] = React.useState();
     const baseURL = "https://pokeapi.co/api/v2/";
+    let pokeDetailArray = [];
 
     React.useEffect(() => {
         fetchData();
@@ -14,12 +15,14 @@ function UserProvider(props) {
             const data = await fetch(baseURL + "pokemon?limit=151").then(
                 (res) => res.json()
             );
-            const pokeMap = data.results.map((item, index) => ({
+            const pokeMap = await data.results.map((item, index) => ({
                 ...item,
                 id: index + 1,
-            }));
-            const pokeDetail = pokeMap.map((item) => {
+            })); //add await to make sure they're in order
+            await pokeMap.map((item) => {
                 fetchDetails(item.url);
+                // const fetchDetail = await fetch(item.url).then((res)=> res.json()).then(function(pokeDetail){
+                // })
             });
             //console.log(pokeMap);
 
@@ -28,19 +31,18 @@ function UserProvider(props) {
         async function fetchDetails(url) {
             //for each result fetch detail
             //let url = pokemon.url;
-            const data = await fetch(url)
+            await fetch(url)
                 .then((res) => res.json())
                 .then(function (pokeDetail) {
-                    console.log(pokeDetail);
+                    pokeDetailArray.push(pokeDetail);
                 });
-            //const detailMap = pokemon.map((item) => ({}));
-            // console.log(pokemon);
-            //console.log(detailMap);
-            setDetails(data);
         }
+        setDetails(pokeDetailArray);
     }, []);
 
-    return <UserContext.Provider value={[pokemon, pokeDetails]} {...props} />;
+    return (
+        <UserContext.Provider value={[{ pokemon, pokeDetails }]} {...props} />
+    );
 }
 
 //custom hook to get data on any screen

@@ -1,10 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./components/HomeScreen";
-import Users from "./components/Users";
-import Settings from "./components/Settings";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -48,7 +45,6 @@ export default function App() {
                         component={UserStackNavigation}
                         option={{ headerShown: false }}
                     />
-                    <Tab.Screen name="Settings" component={Settings} />
                 </Tab.Navigator>
             </NavigationContainer>
         </UserProvider>
