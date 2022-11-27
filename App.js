@@ -15,22 +15,25 @@ export default function App() {
         <UserProvider>
             <NavigationContainer>
                 <Tab.Navigator
+                    style={styles.container}
                     screenOptions={{
-                        headerStyle: { backgroundColor: "indigo" },
+                        headerStyle: { backgroundColor: "#FB1B1B" },
                         headerTintColor: "white",
                         headerTitleAlign: "center",
-                        head3erTitleStyle: {
+                        headerTitleStyle: {
                             fontWeight: "bold",
                         },
-                        tabBarActiveTintColor: "indigo",
-                        tabBarInactiveTintColor: "grey",
+                        tabBarActiveTintColor: "white",
+                        tabBarInactiveBackgroundColor: "#FB1B1B",
+                        tabBarActiveBackgroundColor: "#FB1B1B",
+                        tabBarInactiveTintColor: "#DFDFDF",
                     }}
                 >
                     <Tab.Screen
                         name="Home"
                         component={HomeScreen}
                         options={{
-                            headerShown: false,
+                            // headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (
                                 <Ionicons
                                     name={"home"}
@@ -41,9 +44,18 @@ export default function App() {
                         }}
                     />
                     <Tab.Screen
-                        name="User List"
+                        name="Pokémon List"
                         component={UserStackNavigation}
-                        option={{ headerShown: false }}
+                        options={{
+                            headerShown: false,
+                            tabBarIcon: ({ focused, size, color }) => (
+                                <Ionicons
+                                    name={"list-outline"}
+                                    size={size}
+                                    color={color}
+                                />
+                            ),
+                        }}
                     />
                 </Tab.Navigator>
             </NavigationContainer>
@@ -54,7 +66,8 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#FB1B1B",
+        color: "#fff",
         alignItems: "center",
         justifyContent: "center",
     },

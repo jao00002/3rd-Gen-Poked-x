@@ -10,7 +10,6 @@ function UserProvider(props) {
 
     React.useEffect(() => {
         fetchData();
-        //fetchDetails();
         async function fetchData() {
             const data = await fetch(baseURL + "pokemon?limit=151").then(
                 (res) => res.json()
@@ -21,11 +20,8 @@ function UserProvider(props) {
             })); //add await to make sure they're in order
             await pokeMap.map((item) => {
                 fetchDetails(item.url);
-                // const fetchDetail = await fetch(item.url).then((res)=> res.json()).then(function(pokeDetail){
-                // })
             });
             //console.log(pokeMap);
-
             setPokemon(pokeMap);
         }
         async function fetchDetails(url) {
@@ -39,7 +35,6 @@ function UserProvider(props) {
         }
         setDetails(pokeDetailArray);
     }, []);
-
     return (
         <UserContext.Provider value={[{ pokemon, pokeDetails }]} {...props} />
     );
@@ -52,7 +47,6 @@ function useUser() {
     if (!context) {
         throw new Error("Cannot find a context");
     }
-
     return context;
 }
 

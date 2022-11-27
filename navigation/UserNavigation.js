@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 const UserStackNavigation = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Users" component={Users} />
+            <Stack.Screen name="Pokémon" component={Users} />
             <Stack.Screen name="Details" component={Details} />
         </Stack.Navigator>
     );
