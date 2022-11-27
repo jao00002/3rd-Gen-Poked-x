@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./components/HomeScreen";
@@ -47,7 +47,7 @@ export default function App() {
                         name="Pokémon List"
                         component={UserStackNavigation}
                         options={{
-                            headerShown: false,
+                            //headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (
                                 <Ionicons
                                     name={"list-outline"}

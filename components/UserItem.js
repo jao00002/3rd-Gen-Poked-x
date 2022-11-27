@@ -5,8 +5,8 @@ export default function UserItem({ user: pokemon, onPress }) {
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
             {/* <img src={user.pokeDetails.sprites.front_default} /> */}
-            <Text>Pokémon ID: {pokemon.id}</Text>
-            <Text>{pokemon.name}</Text>
+            <Text style={styles.itemTxt}>{pokemon.name}</Text>
+            <Text style={styles.itemTxt}>Pokémon ID: {pokemon.id}</Text>
         </TouchableOpacity>
     );
 }
@@ -18,5 +18,8 @@ const styles = StyleSheet.create({
         margin: "0.3rem",
         borderRadius: "1rem",
         backgroundColor: "#DFDFDF",
+    },
+    itemTxt: {
+        fontSize: "1.5rem",
     },
 });

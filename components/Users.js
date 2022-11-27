@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useUser } from "../context/userContext";
 import UserItem from "./UserItem";
@@ -9,13 +9,13 @@ function Users({ navigation }) {
     if (!users) {
         return null;
     }
-
     //console.log(users.pokemon);
 
     return (
         <SafeAreaProvider>
-            <SafeAreaView>
+            <SafeAreaView style={styles.header}>
                 <FlatList
+                    style={styles.header}
                     data={users.pokemon}
                     renderItem={({ item }) => (
                         <UserItem
@@ -41,8 +41,7 @@ const styles = StyleSheet.create({
         "text-transform": "capitalize",
         padding: "1rem",
         margin: "0.3rem",
-        borderRadius: "1rem",
-        backgroundColor: "#FB1B1B",
+        backgroundColor: "black",
     },
 });
 

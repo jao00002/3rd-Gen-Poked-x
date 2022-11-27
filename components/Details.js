@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useUser } from "../context/userContext";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import FocusAwareStatusBar from "./FocusAwareStatusBar";
+// import FocusAwareStatusBar from "./FocusAwareStatusBar";
 
 function Details({ route }) {
     const [pokemonList] = useUser();
@@ -23,7 +23,7 @@ function Details({ route }) {
         <>
             <SafeAreaProvider>
                 <SafeAreaView style={styles.container}>
-                    <FocusAwareStatusBar />
+                    {/* <FocusAwareStatusBar style={styles.redder} /> editing this another time*/}
                     <StatusBar barStyle="light-content" backgroundColor="red" />
                     <ScrollView>
                         <View style={styles.pads}>
@@ -161,6 +161,13 @@ const styles = StyleSheet.create({
     },
     pads: {
         padding: "0.5rem",
+    },
+    redder: {
+        padding: "1rem",
+        margin: "0.3rem",
+        backgroundColor: "#FB1B1B",
+        tintColor: "#FB1B1B",
+        color: "#fff",
     },
     StatMarker: {
         "text-transform": "uppercase",

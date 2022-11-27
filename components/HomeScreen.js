@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import FocusAwareStatusBar from "./FocusAwareStatusBar";
+// import FocusAwareStatusBar from "./FocusAwareStatusBar";
 
 function HomeScreen() {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
-                <FocusAwareStatusBar />
+                {/* <FocusAwareStatusBar /> */}
                 <View style={styles.pads}>
                     <View style={styles.card}>
                         <Text style={styles.pads}>
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: "1rem",
         alignContent: "center",
+        backgroundColor: "black",
     },
     instructionsTitle: {
         fontWeight: "bold",
