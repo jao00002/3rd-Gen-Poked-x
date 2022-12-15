@@ -2,7 +2,13 @@ import React from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
 import { useFonts } from "expo-font";
 
-export default function PokeItem({ item: pokeitem, onPress, onPressOut }) {
+export default function PokemonListItem({
+    user: pokemon,
+    onPress,
+    onPressOut,
+}) {
+    // console.log(pokemon);
+
     const [fontsLoaded] = useFonts({
         pkmnem: require("../assets/fonts/pkmnem.ttf"),
     });
@@ -17,17 +23,15 @@ export default function PokeItem({ item: pokeitem, onPress, onPressOut }) {
             onPress={onPress}
             onPressOut={onPressOut}
         >
-            <Text style={styles.itemTxt}>
-                {pokeitem.name.replace("-", " ")}
-            </Text>
-            <Text style={styles.itemTxt}>Item ID: {pokeitem.id}</Text>
+            <Text style={styles.itemTxt}>{pokemon.name}</Text>
+            <Text style={styles.itemTxt}>Pokémon ID: {pokemon.id}</Text>
         </Pressable>
     );
 }
 
 const styles = StyleSheet.create({
     card: {
-        textTransform: "capitalize",
+        "text-transform": "capitalize",
         padding: 10,
         margin: 5,
         borderRadius: 10,
@@ -35,7 +39,7 @@ const styles = StyleSheet.create({
         fontFamily: "pkmnem",
     },
     itemTxt: {
-        fontSize: 20,
+        fontSize: 15,
         fontFamily: "pkmnem",
     },
 });

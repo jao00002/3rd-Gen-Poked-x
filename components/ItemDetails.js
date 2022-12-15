@@ -14,39 +14,40 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 function ItemDetails({ route }) {
     const [itemList] = useUser();
 
-    console.log(itemList);
+    //console.log(itemList);
 
-    let id = parseInt(route.params.id) - 1;
-    //console.log(users.pokeDetails[id].id);
+    let id = route.params.id;
+    //console.log(id);
+    let item = itemList.itemDetails.find((item) => item.id == id);
 
     return (
         <>
             <SafeAreaProvider>
                 <SafeAreaView style={styles.container}>
                     {/* <FocusAwareStatusBar style={styles.redder} /> editing this another time*/}
-                    <StatusBar barStyle="light-content" backgroundColor="red" />
+                    <StatusBar barStyle="dark-content" backgroundColor="red" />
                     <ScrollView>
                         <View style={styles.pads}>
                             <Text style={styles.StatMarker}>Berry Details</Text>
                             <Text style={styles.StatMarker}>
-                                Berry ID: {itemList.itemDetails[id].id}
+                                Item ID: {item.id}
                             </Text>
                             <Text style={styles.pokemonName}>
-                                {itemList.itemDetails[id].name}
+                                {item.names[7].name}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Max Harvest: {itemList.itemDetails[id].name}
+                                Max Harvest: {item.names[7].name}
                             </Text>
                         </View>
                         <Text style={styles.StatMarker}>Sprites:</Text>
                         <View style={styles.spriteRows}>
                             <Text style={styles.StatMarker}>
-                                Default Front Sprite:
+                                Default Sprite:
                             </Text>
                             <Image
                                 style={styles.Sprites}
                                 source={{
-                                    uri: itemList.itemDetails[id].sprites,
+                                    uri: item.sprites.default,
                                 }}
                             />
                         </View>
@@ -62,34 +63,34 @@ const styles = StyleSheet.create({
         "text-transform": "capitalize",
         fontWeight: "bold",
         fontStyle: "italic",
-        padding: "0.5rem",
+        padding: 10,
         color: "white",
-        fontSize: "1.5rem",
+        fontSize: 20,
     },
     container: {
         flex: 1,
-        padding: "1rem",
+        padding: 10,
     },
     spriteRows: {
         flexDirection: "row",
-        margin: "0.5rem",
+        margin: 10,
         flexWrap: "wrap",
         color: "white",
     },
     pads: {
-        padding: "0.5rem",
+        padding: 10,
     },
     StatMarker: {
-        "text-transform": "uppercase",
+        textTransform: "uppercase",
         fontWeight: "bold",
-        padding: "0.5rem",
+        padding: 10,
         color: "white",
     },
     Sprites: {
         width: "96px",
         height: "96px",
-        maxWidth: "10rem",
-        maxHeight: "10rem",
+        maxWidth: 10,
+        maxHeight: 10,
     },
 });
 

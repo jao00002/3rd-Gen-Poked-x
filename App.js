@@ -6,7 +6,7 @@ import HomeScreen from "./components/HomeScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import { UserProvider } from "./context/userContext";
-import { UserStackNavigation } from "./navigation/UserNavigation";
+import { PokemonStackNavigation } from "./navigation/PokemonNavigation";
 import { ItemStackNavigation } from "./navigation/ItemNavigation";
 
 const Tab = createBottomTabNavigator();
@@ -42,11 +42,12 @@ export default function App() {
                                     color={color}
                                 />
                             ),
+                            headerTitleAlign: "center",
                         }}
                     />
                     <Tab.Screen
                         name="Pokémon List"
-                        component={UserStackNavigation}
+                        component={PokemonStackNavigation}
                         options={{
                             //headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (
@@ -56,6 +57,7 @@ export default function App() {
                                     color={color}
                                 />
                             ),
+                            headerTitleAlign: "center",
                         }}
                     />
                     <Tab.Screen
@@ -70,6 +72,7 @@ export default function App() {
                                     color={color}
                                 />
                             ),
+                            headerTitleAlign: "center",
                         }}
                     />
                 </Tab.Navigator>

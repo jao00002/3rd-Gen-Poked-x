@@ -1,24 +1,31 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-// import FocusAwareStatusBar from "./FocusAwareStatusBar";
+import { useFonts } from "expo-font";
 
 function HomeScreen() {
+    const [fontsLoaded] = useFonts({
+        pkmnem: require("../assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
-                {/* <FocusAwareStatusBar /> */}
                 <View style={styles.pads}>
                     <View style={styles.card}>
                         <Text style={styles.pads}>
                             Welcome to the 3rd Gen Pokédex!
-                            <Image
-                                style={styles.Images}
-                                source={{
-                                    uri: require("../assets/pokeball.png"),
-                                }}
-                            />
                         </Text>
+                        {/* <Image
+                            style={styles.Images}
+                            source={{
+                                uri: require("../assets/pokeball.png"),
+                            }}
+                        /> */}
                         <Text style={styles.pads}>
                             AKA (Pokémon #'s 1-386) & Item List
                         </Text>
@@ -41,36 +48,39 @@ function HomeScreen() {
 const styles = StyleSheet.create({
     instructions: {
         fontWeight: "bold",
-        // fontStyle: "italic",
+        fontStyle: "italic",
+        fontFamily: "pkmnem",
     },
     container: {
         flex: 1,
-        padding: "1rem",
+        padding: 10,
         alignContent: "center",
         backgroundColor: "black",
     },
     instructionsTitle: {
         fontWeight: "bold",
-        fontSize: "2rem",
-        padding: "0.5rem",
+        fontSize: 33,
+        padding: 10,
+        fontFamily: "pkmnem",
     },
     pads: {
-        padding: "0.5rem",
-        fontSize: "2rem",
+        padding: 10,
+        fontSize: 30,
+        fontFamily: "pkmnem",
     },
     card: {
         backgroundColor: "#DFDFDF",
-        padding: "0.5rem",
-        borderRadius: "1rem",
-        margin: "0.3rem",
+        padding: 10,
+        borderRadius: 20,
+        margin: 5,
+        fontFamily: "pkmnem",
     },
     Images: {
         display: "flex",
         alignContent: "center",
-        width: "5rem",
-        height: "5rem",
-        maxWidth: "100rem",
-        maxHeight: "100rem",
+        width: 100,
+        height: 100,
+        textAlign: "center",
     },
 });
 

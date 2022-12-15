@@ -9,9 +9,9 @@ import {
 } from "react-native";
 import { useUser } from "../context/userContext";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-// import FocusAwareStatusBar from "./FocusAwareStatusBar";
+import { useFonts } from "expo-font";
 
-function Details({ route }) {
+function PokemonDetails({ route }) {
     const [pokemonList] = useUser();
 
     //console.log(users);
@@ -20,6 +20,17 @@ function Details({ route }) {
     //console.log(id);
     let pokemon = pokemonList.pokeDetails.find((item) => item.id == id);
     //console.log(pokemon);
+
+    //#region fonts
+
+    const [fontsLoaded] = useFonts({
+        pkmnem: require("../assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+    //#endregion
 
     return (
         <>
@@ -131,35 +142,40 @@ const styles = StyleSheet.create({
         "text-transform": "capitalize",
         fontWeight: "bold",
         fontStyle: "italic",
-        padding: "0.5rem",
+        padding: 10,
         color: "white",
-        fontSize: "1.5rem",
+        fontSize: 20,
+        fontFamily: "pkmnem",
     },
     container: {
         flex: 1,
-        padding: "1rem",
+        padding: 10,
+        fontFamily: "pkmnem",
     },
     spriteRows: {
         flexDirection: "row",
-        margin: "0.5rem",
+        margin: 5,
         flexWrap: "wrap",
         color: "white",
+        fontFamily: "pkmnem",
     },
     pads: {
-        padding: "0.5rem",
+        padding: 10,
+        fontFamily: "pkmnem",
     },
     StatMarker: {
         "text-transform": "uppercase",
         fontWeight: "bold",
-        padding: "0.5rem",
+        padding: 10,
         color: "white",
+        fontFamily: "pkmnem",
     },
     Sprites: {
-        width: "96px",
-        height: "96px",
-        maxWidth: "10rem",
-        maxHeight: "10rem",
+        width: "50%",
+        height: "50%",
+        maxWidth: 100,
+        maxHeight: 100,
     },
 });
 
-export default Details;
+export default PokemonDetails;

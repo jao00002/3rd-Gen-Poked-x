@@ -1,18 +1,22 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, TextInput } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useUser } from "../context/userContext";
-import UserItem from "./UserItem";
+import PokemonListItem from "./PokemonListItem";
+import { Audio } from "expo-av";
+import { useFonts } from "expo-font";
 
-function Users({ navigation }) {
-    const [users] = useUser();
+function Pokemon({ navigation }) {
+    const [pokemonList] = useUser();
 
+    //for searching
     const [searchPokemon, setSearchPokemon] = useState("");
     const [filteredPokemon, setFilteredPokemon] = useState([]);
 
     useEffect(() => {
         if (searchPokemon != null) {
-            let newPokemonArray = users.pokemon.filter((poke) => {
+            let newPokemonArray = pokemonList.pokemon.filter((poke) => {
                 return (
                     JSON.stringify(poke.name)
                         .toLowerCase()
@@ -20,14 +24,38 @@ function Users({ navigation }) {
                 );
             });
             setFilteredPokemon(newPokemonArray);
-            console.log(newPokemonArray);
+            //console.log(newPokemonArray);
         }
     }, [searchPokemon]);
 
-    if (!users) {
+    if (!pokemonList) {
         return null;
     }
     //console.log(users.pokemon);
+
+    //#region Sound functions
+    const [sound, setSound] = React.useState();
+    async function playSound() {
+        const { sound } = await Audio.Sound.createAsync(
+            require("../assets/pokemon-a-button.mp3")
+        );
+        setSound(sound);
+        await sound.playAsync();
+    }
+    //#endregion
+
+    //#region Font
+
+    const [fontsLoaded] = useFonts({
+        pkmnem: require("../assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
+    //#endregion
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
@@ -43,7 +71,7 @@ function Users({ navigation }) {
                     data={filteredPokemon}
                     extraData={searchPokemon}
                     renderItem={({ item }) => (
-                        <UserItem
+                        <PokemonListItem
                             user={item}
                             onPress={() =>
                                 navigation.navigate("Details", {
@@ -52,6 +80,7 @@ function Users({ navigation }) {
                                     url: item.url,
                                 })
                             }
+                            onPressOut={playSound}
                         />
                     )}
                     keyExtractor={(item) => item.id}
@@ -63,19 +92,27 @@ function Users({ navigation }) {
 
 const styles = StyleSheet.create({
     header: {
-        "text-transform": "capitalize",
-        padding: "1rem",
-        margin: "0.3rem",
+        textTransform: "capitalize",
+        padding: 10,
+        margin: 5,
         backgroundColor: "black",
+        fontFamily: "pkmnem",
     },
     container: {
-        "text-transform": "capitalize",
+        textTransform: "capitalize",
         backgroundColor: "black",
         flex: 1,
+        fontFamily: "pkmnem",
     },
     search: {
         color: "white",
+        fontFamily: "pkmnem",
+        padding: 15,
+        borderColor: "#B7B7CE",
+        borderRadius: 10,
+        borderStyle: "solid",
+        borderWidth: 1,
     },
 });
 
-export default Users;
+export default Pokemon;

@@ -38,10 +38,6 @@ const styles = StyleSheet.create({
     },
     stackHeader: {
         backgroundColor: "#FB1B1B",
-        fontWeight: "bold",
-        textDecorationColor: "#fff",
-        textAlign: "center",
-        color: "white",
     },
 });
 

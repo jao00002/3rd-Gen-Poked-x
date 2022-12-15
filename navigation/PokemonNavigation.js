@@ -1,11 +1,21 @@
-import Users from "../components/Users";
-import Details from "../components/Details";
+import Pokemon from "../components/Pokemon";
+import PokemonDetails from "../components/PokemonDetails";
 import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useFonts } from "expo-font";
+import React from "react";
 
 const Stack = createStackNavigator();
 
-const UserStackNavigation = () => {
+const PokemonStackNavigation = () => {
+    const [fontsLoaded] = useFonts({
+        pkmnem: require("../assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
     return (
         <Stack.Navigator>
             <Stack.Screen
@@ -14,7 +24,7 @@ const UserStackNavigation = () => {
                     headerStyle: styles.stackHeader,
                 }}
                 name="Pokédex"
-                component={Users}
+                component={Pokemon}
             />
             <Stack.Screen
                 options={{
@@ -22,7 +32,7 @@ const UserStackNavigation = () => {
                     headerStyle: styles.stackHeader,
                 }}
                 name="Details"
-                component={Details}
+                component={PokemonDetails}
             />
         </Stack.Navigator>
     );
@@ -34,15 +44,11 @@ const styles = StyleSheet.create({
         padding: 0,
         margin: 0,
         color: "white",
-        //"#FB1B1B",
+        fontFamily: "pkmnem",
     },
     stackHeader: {
         backgroundColor: "#FB1B1B",
-        fontWeight: "bold",
-        textDecorationColor: "#fff",
-        textAlign: "center",
-        color: "white",
     },
 });
 
-export { UserStackNavigation };
+export { PokemonStackNavigation };
