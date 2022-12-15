@@ -16,8 +16,10 @@ function Details({ route }) {
 
     //console.log(users);
 
-    let id = parseInt(route.params.id) - 1;
-    //console.log(users.pokeDetails[id].id);
+    let id = route.params.id;
+    //console.log(id);
+    let pokemon = pokemonList.pokeDetails.find((item) => item.id == id);
+    //console.log(pokemon);
 
     return (
         <>
@@ -29,26 +31,25 @@ function Details({ route }) {
                         <View style={styles.pads}>
                             <Text style={styles.StatMarker}>
                                 Pokémon Details
-                            </Text>
-                            <Text style={styles.pokemonName}>
-                                {pokemonList.pokeDetails[id].name}
+                                {/* {pokemon.name} */}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Type:{" "}
-                                {pokemonList.pokeDetails[id].types[0].type.name}
-                                {/* {JSON.stringify(
-                                    pokemonList.pokeDetails[id].types[1].type
-                                        .name
-                                ).length > 0 && (
-                                    <Text>
-                                        {" "}
-                                        /{" "}
-                                        {
-                                            pokemonList.pokeDetails[id].types[1]
-                                                .type.name
-                                        }
-                                    </Text>
-                                )} */}
+                                Pokémon ID: {pokemon.id}
+                            </Text>
+                            <Text style={styles.pokemonName}>
+                                {pokemon.name}
+                            </Text>
+                            <Text style={styles.StatMarker}>
+                                Type: {pokemon.types[0].type.name}
+                                {
+                                    Object.keys(pokemon.types).length > 1 && (
+                                        <Text>
+                                            {" "}
+                                            / {pokemon.types[1].type.name}
+                                        </Text>
+                                    )
+                                    //only if the Pokémon has more than 1 type
+                                }
                             </Text>
                             <Text style={styles.StatMarker}>Sprites:</Text>
                             <View style={styles.spriteRows}>
@@ -58,8 +59,7 @@ function Details({ route }) {
                                 <Image
                                     style={styles.Sprites}
                                     source={{
-                                        uri: pokemonList.pokeDetails[id].sprites
-                                            .front_default,
+                                        uri: pokemon.sprites.front_default,
                                     }}
                                 />
 
@@ -69,8 +69,7 @@ function Details({ route }) {
                                 <Image
                                     style={styles.Sprites}
                                     source={{
-                                        uri: pokemonList.pokeDetails[id].sprites
-                                            .back_default,
+                                        uri: pokemon.sprites.back_default,
                                     }}
                                 />
                                 <Text style={styles.StatMarker}>
@@ -79,8 +78,7 @@ function Details({ route }) {
                                 <Image
                                     style={styles.Sprites}
                                     source={{
-                                        uri: pokemonList.pokeDetails[id].sprites
-                                            .front_shiny,
+                                        uri: pokemon.sprites.front_shiny,
                                     }}
                                 />
 
@@ -90,50 +88,35 @@ function Details({ route }) {
                                 <Image
                                     style={styles.Sprites}
                                     source={{
-                                        uri: pokemonList.pokeDetails[id].sprites
-                                            .back_shiny,
+                                        uri: pokemon.sprites.back_shiny,
                                     }}
                                 />
                             </View>
-                            <Text style={styles.StatMarker}>
-                                Pokémon ID: {pokemonList.pokeDetails[id].id}
-                            </Text>
+
                             <Text style={styles.StatMarker}>Stats: </Text>
                             <Text style={styles.StatMarker}>
-                                Base{" "}
-                                {pokemonList.pokeDetails[id].stats[0].stat.name}
-                                :{" "}
-                                {pokemonList.pokeDetails[id].stats[0].base_stat}
+                                Base {pokemon.stats[0].stat.name}:{" "}
+                                {pokemon.stats[0].base_stat}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Base{" "}
-                                {pokemonList.pokeDetails[id].stats[1].stat.name}
-                                :{" "}
-                                {pokemonList.pokeDetails[id].stats[1].base_stat}
+                                Base {pokemon.stats[1].stat.name}:{" "}
+                                {pokemon.stats[1].base_stat}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Base{" "}
-                                {pokemonList.pokeDetails[id].stats[2].stat.name}
-                                :{" "}
-                                {pokemonList.pokeDetails[id].stats[2].base_stat}
+                                Base {pokemon.stats[2].stat.name}:{" "}
+                                {pokemon.stats[2].base_stat}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Base{" "}
-                                {pokemonList.pokeDetails[id].stats[3].stat.name}
-                                :{" "}
-                                {pokemonList.pokeDetails[id].stats[3].base_stat}
+                                Base {pokemon.stats[3].stat.name}:{" "}
+                                {pokemon.stats[3].base_stat}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Base{" "}
-                                {pokemonList.pokeDetails[id].stats[4].stat.name}
-                                :{" "}
-                                {pokemonList.pokeDetails[id].stats[4].base_stat}
+                                Base {pokemon.stats[4].stat.name}:{" "}
+                                {pokemon.stats[4].base_stat}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Base{" "}
-                                {pokemonList.pokeDetails[id].stats[5].stat.name}
-                                :{" "}
-                                {pokemonList.pokeDetails[id].stats[5].base_stat}
+                                Base {pokemon.stats[5].stat.name}:{" "}
+                                {pokemon.stats[5].base_stat}
                             </Text>
                         </View>
                     </ScrollView>
@@ -149,6 +132,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontStyle: "italic",
         padding: "0.5rem",
+        color: "white",
+        fontSize: "1.5rem",
     },
     container: {
         flex: 1,
@@ -158,21 +143,16 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         margin: "0.5rem",
         flexWrap: "wrap",
+        color: "white",
     },
     pads: {
         padding: "0.5rem",
-    },
-    redder: {
-        padding: "1rem",
-        margin: "0.3rem",
-        backgroundColor: "#FB1B1B",
-        tintColor: "#FB1B1B",
-        color: "#fff",
     },
     StatMarker: {
         "text-transform": "uppercase",
         fontWeight: "bold",
         padding: "0.5rem",
+        color: "white",
     },
     Sprites: {
         width: "96px",

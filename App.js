@@ -7,6 +7,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 import { UserProvider } from "./context/userContext";
 import { UserStackNavigation } from "./navigation/UserNavigation";
+import { ItemStackNavigation } from "./navigation/ItemNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +47,20 @@ export default function App() {
                     <Tab.Screen
                         name="Pokémon List"
                         component={UserStackNavigation}
+                        options={{
+                            //headerShown: false,
+                            tabBarIcon: ({ focused, size, color }) => (
+                                <Ionicons
+                                    name={"list-outline"}
+                                    size={size}
+                                    color={color}
+                                />
+                            ),
+                        }}
+                    />
+                    <Tab.Screen
+                        name="Item List"
+                        component={ItemStackNavigation}
                         options={{
                             //headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (

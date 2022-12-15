@@ -11,7 +11,7 @@ function HomeScreen() {
                 <View style={styles.pads}>
                     <View style={styles.card}>
                         <Text style={styles.pads}>
-                            Welcome to the 1st Gen Pokédex!
+                            Welcome to the 3rd Gen Pokédex!
                             <Image
                                 style={styles.Images}
                                 source={{
@@ -19,15 +19,17 @@ function HomeScreen() {
                                 }}
                             />
                         </Text>
-                        <Text style={styles.pads}>AKA (Pokémon #'s 1-151)</Text>
+                        <Text style={styles.pads}>
+                            AKA (Pokémon #'s 1-386) & Item List
+                        </Text>
                     </View>
                     <View style={styles.card}>
                         <Text style={styles.instructionsTitle}>
                             Instructions:
                         </Text>
                         <Text style={styles.instructions}>
-                            Tap Pokémon List on the bottom bar to begin looking
-                            through the Pokèdex.
+                            Tap Pokémon List or Item List on the bottom bar to
+                            begin looking through the Pokèdex.
                         </Text>
                     </View>
                 </View>

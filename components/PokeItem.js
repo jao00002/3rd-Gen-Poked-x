@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-export default function UserItem({ user: pokemon, onPress }) {
-    // console.log(pokemon);
+export default function PokeItem({ item: pokeitem, onPress }) {
+    console.log(pokeitem);
+    //replace with Pressable
     return (
         <Pressable style={styles.card} onPress={onPress}>
             {/* <img src={user.pokeDetails.sprites.front_default} /> */}
-            <Text style={styles.itemTxt}>{pokemon.name}</Text>
-            <Text style={styles.itemTxt}>Pokémon ID: {pokemon.id}</Text>
+            <Text style={styles.itemTxt}>{pokeitem.name}</Text>
+            <Text style={styles.itemTxt}>Item ID: {pokeitem.id}</Text>
         </Pressable>
     );
 }

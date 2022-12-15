@@ -1,11 +1,11 @@
-import Users from "../components/Users";
-import Details from "../components/Details";
+import ItemDetails from "../components/ItemDetails";
+import Items from "../components/Items";
 import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 
-const UserStackNavigation = () => {
+const ItemStackNavigation = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen
@@ -13,16 +13,16 @@ const UserStackNavigation = () => {
                     cardStyle: styles.cards,
                     headerStyle: styles.stackHeader,
                 }}
-                name="Pokédex"
-                component={Users}
+                name="Items"
+                component={Items}
             />
             <Stack.Screen
                 options={{
                     cardStyle: styles.cards,
                     headerStyle: styles.stackHeader,
                 }}
-                name="Details"
-                component={Details}
+                name="Item Details"
+                component={ItemDetails}
             />
         </Stack.Navigator>
     );
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export { UserStackNavigation };
+export { ItemStackNavigation };
