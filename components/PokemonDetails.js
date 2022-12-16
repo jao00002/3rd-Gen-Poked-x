@@ -139,9 +139,9 @@ function PokemonDetails({ route }) {
 
 const styles = StyleSheet.create({
     pokemonName: {
-        "text-transform": "capitalize",
-        fontWeight: "bold",
-        fontStyle: "italic",
+        textTransform: "capitalize",
+        // fontWeight: "bold",
+        // fontStyle: "italic",
         padding: 10,
         color: "white",
         fontSize: 20,
@@ -164,17 +164,17 @@ const styles = StyleSheet.create({
         fontFamily: "pkmnem",
     },
     StatMarker: {
-        "text-transform": "uppercase",
-        fontWeight: "bold",
+        textTransform: "uppercase",
+        // fontWeight: "bold",
         padding: 10,
         color: "white",
         fontFamily: "pkmnem",
     },
     Sprites: {
-        width: "50%",
-        height: "50%",
-        maxWidth: 100,
-        maxHeight: 100,
+        width: 100,
+        height: 100,
+        maxWidth: "100%",
+        maxHeight: "100%",
     },
 });
 

@@ -1,16 +1,24 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
 function HomeScreen() {
+    SplashScreen.preventAutoHideAsync();
+
     const [fontsLoaded] = useFonts({
         pkmnem: require("../assets/fonts/pkmnem.ttf"),
     });
 
     if (!fontsLoaded) {
         return null;
-    }
+    } //fonts
+
+    setTimeout(async () => {
+        await SplashScreen.hideAsync();
+    }, 3500);
 
     return (
         <SafeAreaProvider>
@@ -20,12 +28,10 @@ function HomeScreen() {
                         <Text style={styles.pads}>
                             Welcome to the 3rd Gen Pokédex!
                         </Text>
-                        {/* <Image
+                        <Image
                             style={styles.Images}
-                            source={{
-                                uri: require("../assets/pokeball.png"),
-                            }}
-                        /> */}
+                            source={require("../assets/pokeball.png")}
+                        />
                         <Text style={styles.pads}>
                             AKA (Pokémon #'s 1-386) & Item List
                         </Text>
@@ -47,9 +53,10 @@ function HomeScreen() {
 
 const styles = StyleSheet.create({
     instructions: {
-        fontWeight: "bold",
-        fontStyle: "italic",
+        // fontWeight: "bold",
+        // fontStyle: "italic",
         fontFamily: "pkmnem",
+        fontSize: 20,
     },
     container: {
         flex: 1,
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
         backgroundColor: "black",
     },
     instructionsTitle: {
-        fontWeight: "bold",
+        // fontWeight: "bold",
         fontSize: 33,
         padding: 10,
         fontFamily: "pkmnem",

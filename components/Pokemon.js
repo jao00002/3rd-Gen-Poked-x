@@ -1,6 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { FlatList, StyleSheet, TextInput } from "react-native";
+import {
+    View,
+    FlatList,
+    StyleSheet,
+    TextInput,
+    ActivityIndicator,
+    Alert,
+} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useUser } from "../context/userContext";
 import PokemonListItem from "./PokemonListItem";
@@ -56,6 +63,24 @@ function Pokemon({ navigation }) {
 
     //#endregion
 
+    //#region Alerts
+
+    function noPokemonFoundAlert() {
+        Alert.alert(
+            "No results found",
+            "We couldn't find a Pokémon with that name.",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel",
+                },
+                { text: "OK", onPress: () => console.log("OK Pressed") },
+            ]
+        );
+    }
+
+    //#endregion
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
@@ -63,9 +88,17 @@ function Pokemon({ navigation }) {
                     style={styles.search}
                     placeholder="Search for a Pokémon"
                     onChangeText={(text) => {
+                        // createTwoButtonAlert();
                         setSearchPokemon(text);
                     }}
+                    onEndEditing={() => {
+                        if (filteredPokemon.length == 0) {
+                            noPokemonFoundAlert();
+                        }
+                    }}
+                    on
                 />
+
                 <FlatList
                     style={styles.header}
                     data={filteredPokemon}

@@ -9,7 +9,9 @@ import {
 } from "react-native";
 import { useUser } from "../context/userContext";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-// import FocusAwareStatusBar from "./FocusAwareStatusBar";
+import { useFonts } from "expo-font";
+import SvgComponent from "./SvgComponent";
+
 //TODO: Add splash screen, Font, linear gradient, sound
 function ItemDetails({ route }) {
     const [itemList] = useUser();
@@ -20,6 +22,17 @@ function ItemDetails({ route }) {
     //console.log(id);
     let item = itemList.itemDetails.find((item) => item.id == id);
 
+    //#region fonts
+
+    const [fontsLoaded] = useFonts({
+        pkmnem: require("../assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+    //#endregion
+
     return (
         <>
             <SafeAreaProvider>
@@ -27,16 +40,16 @@ function ItemDetails({ route }) {
                     {/* <FocusAwareStatusBar style={styles.redder} /> editing this another time*/}
                     <StatusBar barStyle="dark-content" backgroundColor="red" />
                     <ScrollView>
-                        <View style={styles.pads}>
-                            <Text style={styles.StatMarker}>Berry Details</Text>
-                            <Text style={styles.StatMarker}>
-                                Item ID: {item.id}
-                            </Text>
+                        <View>
                             <Text style={styles.pokemonName}>
                                 {item.names[7].name}
                             </Text>
                             <Text style={styles.StatMarker}>
-                                Max Harvest: {item.names[7].name}
+                                Item ID: {item.id}
+                            </Text>
+                            <Text style={styles.StatMarker}>
+                                Cost: <SvgComponent style={styles.pokedollar} />
+                                {item.cost}
                             </Text>
                         </View>
                         <Text style={styles.StatMarker}>Sprites:</Text>
@@ -60,12 +73,13 @@ function ItemDetails({ route }) {
 
 const styles = StyleSheet.create({
     pokemonName: {
-        "text-transform": "capitalize",
-        fontWeight: "bold",
-        fontStyle: "italic",
+        textTransform: "uppercase",
+        // fontWeight: "bold",
+        // fontStyle: "italic",
         padding: 10,
         color: "white",
-        fontSize: 20,
+        fontSize: 30,
+        fontFamily: "pkmnem",
     },
     container: {
         flex: 1,
@@ -73,7 +87,7 @@ const styles = StyleSheet.create({
     },
     spriteRows: {
         flexDirection: "row",
-        margin: 10,
+        margin: 0,
         flexWrap: "wrap",
         color: "white",
     },
@@ -82,15 +96,21 @@ const styles = StyleSheet.create({
     },
     StatMarker: {
         textTransform: "uppercase",
-        fontWeight: "bold",
+        // fontWeight: "bold",
+        margin: 0,
         padding: 10,
         color: "white",
+        fontFamily: "pkmnem",
     },
     Sprites: {
-        width: "96px",
-        height: "96px",
-        maxWidth: 10,
-        maxHeight: 10,
+        width: 50,
+        height: 50,
+        maxWidth: "100%",
+        maxHeight: "100%",
+    },
+    pokedollar: {
+        width: 10,
+        height: 10,
     },
 });
 

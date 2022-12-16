@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         fontFamily: "pkmnem",
     },
     itemTxt: {
+        textTransform: "capitalize",
         fontSize: 15,
         fontFamily: "pkmnem",
     },

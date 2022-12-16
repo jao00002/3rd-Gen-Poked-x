@@ -17,11 +17,11 @@ function UserProvider(props) {
             const data = await fetch(baseURL + "pokemon?limit=386").then(
                 (res) => res.json()
             );
-            const pokeMap = await data.results.map((item, index) => ({
+            const pokeMap = data.results.map((item, index) => ({
                 ...item,
                 id: index + 1,
             })); //add await to make sure they're in order
-            await pokeMap.map((item) => {
+            pokeMap.map((item) => {
                 fetchDetails(item.url);
             });
             //console.log(pokeMap);
@@ -40,14 +40,14 @@ function UserProvider(props) {
 
         fetchItemData();
         async function fetchItemData() {
-            const data = await fetch(baseURL + "item?limit=150").then((res) =>
+            const data = await fetch(baseURL + "item?limit=50").then((res) =>
                 res.json()
             );
-            const itemMap = await data.results.map((item, index) => ({
+            const itemMap = data.results.map((item, index) => ({
                 ...item,
                 id: index + 1,
             })); //add await to make sure they're in order
-            await itemMap.map((item) => {
+            itemMap.map((item) => {
                 fetchItemDetails(item.url);
             });
             //console.log(itemMap);

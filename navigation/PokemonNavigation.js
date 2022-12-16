@@ -22,6 +22,8 @@ const PokemonStackNavigation = () => {
                 options={{
                     cardStyle: styles.cards,
                     headerStyle: styles.stackHeader,
+                    headerTintColor: "#FFFFFF",
+                    headerShown: false,
                 }}
                 name="Pokédex"
                 component={Pokemon}
@@ -30,6 +32,8 @@ const PokemonStackNavigation = () => {
                 options={{
                     cardStyle: styles.cards,
                     headerStyle: styles.stackHeader,
+                    headerTitleStyle: styles.stackHeader,
+                    headerTintColor: "#FFFFFF",
                 }}
                 name="Details"
                 component={PokemonDetails}
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
     },
     stackHeader: {
         backgroundColor: "#FB1B1B",
+        fontFamily: "pkmnem",
     },
 });
 

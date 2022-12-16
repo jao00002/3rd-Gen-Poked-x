@@ -4,14 +4,26 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./components/HomeScreen";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
+import * as SplashScreen from "expo-splash-screen";
 
 import { UserProvider } from "./context/userContext";
 import { PokemonStackNavigation } from "./navigation/PokemonNavigation";
 import { ItemStackNavigation } from "./navigation/ItemNavigation";
+import * as Font from "expo-font";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+    //#region fonts
+    const [fontsLoaded] = Font.useFonts({
+        pkmnem: require("./assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+    //#endregion
+
     return (
         <UserProvider>
             <NavigationContainer>
@@ -22,7 +34,7 @@ export default function App() {
                         headerTintColor: "white",
                         headerTitleAlign: "center",
                         headerTitleStyle: {
-                            fontWeight: "bold",
+                            fontFamily: "pkmnem",
                         },
                         tabBarActiveTintColor: "white",
                         tabBarInactiveBackgroundColor: "#FB1B1B",
@@ -88,5 +100,6 @@ const styles = StyleSheet.create({
         color: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        fontFamily: "pkmnem",
     },
 });

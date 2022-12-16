@@ -21,7 +21,7 @@ function Items({ navigation }) {
 
     useEffect(() => {
         if (searchItem != null) {
-            let newItemArray = itemList.pokemon.filter((item) => {
+            let newItemArray = itemList.item.filter((item) => {
                 return (
                     JSON.stringify(item.name)
                         .toLowerCase()
@@ -29,7 +29,7 @@ function Items({ navigation }) {
                 );
             });
             setFilteredItem(newItemArray);
-            console.log(newItemArray);
+            //console.log(newItemArray);
         }
     }, [searchItem]);
 
@@ -86,7 +86,7 @@ function Items({ navigation }) {
 
 const styles = StyleSheet.create({
     header: {
-        "text-transform": "capitalize",
+        textTransform: "capitalize",
         padding: 10,
         margin: 5,
         backgroundColor: "black",
@@ -100,6 +100,12 @@ const styles = StyleSheet.create({
     search: {
         color: "white",
         fontFamily: "pkmnem",
+        tintColor: "#FFFFFF",
+        padding: 15,
+        borderColor: "#B7B7CE",
+        borderRadius: 10,
+        borderStyle: "solid",
+        borderWidth: 1,
     },
 });
 

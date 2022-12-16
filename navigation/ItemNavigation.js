@@ -12,6 +12,7 @@ const ItemStackNavigation = () => {
                 options={{
                     cardStyle: styles.cards,
                     headerStyle: styles.stackHeader,
+                    headerTintColor: "#FFFFFF",
                 }}
                 name="Items"
                 component={Items}
@@ -20,6 +21,7 @@ const ItemStackNavigation = () => {
                 options={{
                     cardStyle: styles.cards,
                     headerStyle: styles.stackHeader,
+                    headerTintColor: "#FFFFFF",
                 }}
                 name="Item Details"
                 component={ItemDetails}
