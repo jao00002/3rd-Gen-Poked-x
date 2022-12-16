@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     itemTxt: {
         textTransform: "capitalize",
-        fontSize: 15,
+        fontSize: 20,
         fontFamily: "pkmnem",
     },
 });

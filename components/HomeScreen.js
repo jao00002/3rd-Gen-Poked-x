@@ -25,7 +25,7 @@ function HomeScreen() {
     const loadedApp = () => {
         setTimeout(async function () {
             setLoading(false);
-        }, 5000);
+        }, 3000);
     };
 
     return (

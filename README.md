@@ -1,4 +1,4 @@
-# Pokédex & Item List Database
+## 3rd Gen National Pokédex & Item List Database
 
 ## Features
 

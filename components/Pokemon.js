@@ -69,14 +69,7 @@ function Pokemon({ navigation }) {
         Alert.alert(
             "No results found",
             "We couldn't find a Pokémon with that name.",
-            [
-                {
-                    text: "Cancel",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel",
-                },
-                { text: "OK", onPress: () => console.log("OK Pressed") },
-            ]
+            [{ text: "OK" }]
         );
     }
 
@@ -87,6 +80,7 @@ function Pokemon({ navigation }) {
                 <TextInput
                     style={styles.search}
                     placeholder="Search for a Pokémon"
+                    placeholderTextColor="#ffffff"
                     onChangeText={(text) => {
                         // createTwoButtonAlert();
                         setSearchPokemon(text);
@@ -96,7 +90,6 @@ function Pokemon({ navigation }) {
                             noPokemonFoundAlert();
                         }
                     }}
-                    on
                 />
 
                 <FlatList
@@ -144,6 +137,7 @@ const styles = StyleSheet.create({
         padding: 15,
         borderColor: "#B7B7CE",
         borderRadius: 10,
+        margin: 10,
         borderStyle: "solid",
         borderWidth: 1,
     },

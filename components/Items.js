@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { FlatList, TextInput, StyleSheet } from "react-native";
+import { FlatList, TextInput, StyleSheet, Alert } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useUser } from "../context/userContext";
 import PokeItem from "./PokeItem";
@@ -50,14 +50,32 @@ function Items({ navigation }) {
         return null;
     }
 
+    //#region Alerts
+
+    function noItemFoundAlert() {
+        Alert.alert(
+            "No results found",
+            "We couldn't find an item with that name.",
+            [{ text: "OK" }]
+        );
+    }
+
+    //#endregion
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
                 <TextInput
                     style={styles.search}
                     placeholder="Search for an Item"
+                    placeholderTextColor="#ffffff"
                     onChangeText={(text) => {
                         setSearchItem(text);
+                    }}
+                    onEndEditing={() => {
+                        if (filteredItem.length == 0) {
+                            noItemFoundAlert();
+                        }
                     }}
                 />
                 <FlatList
@@ -103,9 +121,13 @@ const styles = StyleSheet.create({
         tintColor: "#FFFFFF",
         padding: 15,
         borderColor: "#B7B7CE",
+        margin: 10,
         borderRadius: 10,
         borderStyle: "solid",
         borderWidth: 1,
+    },
+    placeholder: {
+        color: "white",
     },
 });
 

@@ -38,15 +38,14 @@ function PokemonDetails({ route }) {
                     <StatusBar barStyle="light-content" backgroundColor="red" />
                     <ScrollView>
                         <View style={styles.pads}>
+                            <Text style={styles.pokemonName}>
+                                {pokemon.name}
+                            </Text>
                             <Text style={styles.StatMarker}>
-                                Pokémon Details
-                                {/* {pokemon.name} */}
+                                Pokémon Details:
                             </Text>
                             <Text style={styles.StatMarker}>
                                 Pokémon ID: {pokemon.id}
-                            </Text>
-                            <Text style={styles.pokemonName}>
-                                {pokemon.name}
                             </Text>
                             <Text style={styles.StatMarker}>
                                 Type: {pokemon.types[0].type.name}
@@ -137,7 +136,7 @@ function PokemonDetails({ route }) {
 
 const styles = StyleSheet.create({
     pokemonName: {
-        textTransform: "capitalize",
+        textTransform: "uppercase",
         // fontWeight: "bold",
         // fontStyle: "italic",
         padding: 10,
