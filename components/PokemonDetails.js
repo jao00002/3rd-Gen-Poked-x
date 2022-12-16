@@ -14,8 +14,6 @@ import { useFonts } from "expo-font";
 function PokemonDetails({ route }) {
     const [pokemonList] = useUser();
 
-    //console.log(users);
-
     let id = route.params.id;
     //console.log(id);
     let pokemon = pokemonList.pokeDetails.find((item) => item.id == id);
@@ -144,7 +142,7 @@ const styles = StyleSheet.create({
         // fontStyle: "italic",
         padding: 10,
         color: "white",
-        fontSize: 20,
+        fontSize: 25,
         fontFamily: "pkmnem",
     },
     container: {
