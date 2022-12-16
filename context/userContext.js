@@ -40,7 +40,7 @@ function UserProvider(props) {
 
         fetchItemData();
         async function fetchItemData() {
-            const data = await fetch(baseURL + "item?limit=50").then((res) =>
+            const data = await fetch(baseURL + "item?limit=100").then((res) =>
                 res.json()
             );
             const itemMap = data.results.map((item, index) => ({

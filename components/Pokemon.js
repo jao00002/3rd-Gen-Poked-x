@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     },
     search: {
         color: "white",
+        tintColor: "white",
         fontFamily: "pkmnem",
         padding: 15,
         borderColor: "#B7B7CE",

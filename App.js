@@ -55,6 +55,7 @@ export default function App() {
                                 />
                             ),
                             headerTitleAlign: "center",
+                            tabBarLabelStyle: styles.tabText,
                         }}
                     />
                     <Tab.Screen
@@ -70,6 +71,7 @@ export default function App() {
                                 />
                             ),
                             headerTitleAlign: "center",
+                            tabBarLabelStyle: styles.tabText,
                         }}
                     />
                     <Tab.Screen
@@ -85,6 +87,7 @@ export default function App() {
                                 />
                             ),
                             headerTitleAlign: "center",
+                            tabBarLabelStyle: styles.tabText,
                         }}
                     />
                 </Tab.Navigator>
@@ -100,6 +103,9 @@ const styles = StyleSheet.create({
         color: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        fontFamily: "pkmnem",
+    },
+    tabText: {
         fontFamily: "pkmnem",
     },
 });

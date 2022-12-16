@@ -2,16 +2,26 @@ import ItemDetails from "../components/ItemDetails";
 import Items from "../components/Items";
 import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useFonts } from "expo-font";
 
 const Stack = createStackNavigator();
 
 const ItemStackNavigation = () => {
+    const [fontsLoaded] = useFonts({
+        pkmnem: require("../assets/fonts/pkmnem.ttf"),
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
     return (
         <Stack.Navigator>
             <Stack.Screen
                 options={{
                     cardStyle: styles.cards,
-                    headerStyle: styles.stackHeader,
+                    headerStyle: styles.stackHeaderBG,
+                    headerTitleStyle: styles.stackHeaderTitle,
                     headerTintColor: "#FFFFFF",
                 }}
                 name="Items"
@@ -20,7 +30,8 @@ const ItemStackNavigation = () => {
             <Stack.Screen
                 options={{
                     cardStyle: styles.cards,
-                    headerStyle: styles.stackHeader,
+                    headerStyle: styles.stackHeaderBG,
+                    headerTitleStyle: styles.stackHeaderTitle,
                     headerTintColor: "#FFFFFF",
                 }}
                 name="Item Details"
@@ -36,9 +47,13 @@ const styles = StyleSheet.create({
         padding: 0,
         margin: 0,
         color: "white",
+        fontFamily: "pkmnem",
         //"#FB1B1B",
     },
-    stackHeader: {
+    stackHeaderTitle: {
+        fontFamily: "pkmnem",
+    },
+    stackHeaderBG: {
         backgroundColor: "#FB1B1B",
     },
 });

@@ -21,7 +21,8 @@ const PokemonStackNavigation = () => {
             <Stack.Screen
                 options={{
                     cardStyle: styles.cards,
-                    headerStyle: styles.stackHeader,
+                    headerStyle: styles.stackHeaderBG,
+                    headerTitleStyle: styles.stackHeaderTitle,
                     headerTintColor: "#FFFFFF",
                     headerShown: false,
                 }}
@@ -31,8 +32,8 @@ const PokemonStackNavigation = () => {
             <Stack.Screen
                 options={{
                     cardStyle: styles.cards,
-                    headerStyle: styles.stackHeader,
-                    headerTitleStyle: styles.stackHeader,
+                    headerStyle: styles.stackHeaderBG,
+                    headerTitleStyle: styles.stackHeaderTitle,
                     headerTintColor: "#FFFFFF",
                 }}
                 name="Details"
@@ -50,9 +51,11 @@ const styles = StyleSheet.create({
         color: "white",
         fontFamily: "pkmnem",
     },
-    stackHeader: {
-        backgroundColor: "#FB1B1B",
+    stackHeaderTitle: {
         fontFamily: "pkmnem",
+    },
+    stackHeaderBG: {
+        backgroundColor: "#FB1B1B",
     },
 });
 

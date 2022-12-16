@@ -20,11 +20,11 @@
         },
         "android": {
             "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
+                "foregroundImage": "./assets/icon.png",
                 "backgroundColor": "#000000"
             },
             "splash": {
-                "image": "./assets/pokeball.png",
+                "image": "./assets/icon.png",
                 "resizeMode": "contain",
                 "backgroundColor": "#000000"
             }
