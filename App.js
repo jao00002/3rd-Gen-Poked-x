@@ -1,10 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./components/HomeScreen";
 
 import Ionicons from "react-native-vector-icons/Ionicons";
-import * as SplashScreen from "expo-splash-screen";
 
 import { UserProvider } from "./context/userContext";
 import { PokemonStackNavigation } from "./navigation/PokemonNavigation";
@@ -48,10 +47,16 @@ export default function App() {
                         options={{
                             // headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (
-                                <Ionicons
-                                    name={"home"}
+                                // <Ionicons
+                                //     name={"home"}
+                                //     size={size}
+                                //     color={color}
+                                // />
+                                <Image
+                                    source={require("./assets/rr_3_champion-ribbon.png")}
                                     size={size}
                                     color={color}
+                                    // style={styles.ribbonImg}
                                 />
                             ),
                             headerTitleAlign: "center",
@@ -64,10 +69,11 @@ export default function App() {
                         options={{
                             //headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (
-                                <Ionicons
-                                    name={"list-outline"}
+                                <Image
+                                    source={require("./assets/ico-a_old_egg.gif")}
                                     size={size}
                                     color={color}
+                                    style={styles.eggImg}
                                 />
                             ),
                             headerTitleAlign: "center",
@@ -80,10 +86,11 @@ export default function App() {
                         options={{
                             //headerShown: false,
                             tabBarIcon: ({ focused, size, color }) => (
-                                <Ionicons
-                                    name={"list-outline"}
+                                <Image
+                                    source={require("./assets/itemsbag.png")}
                                     size={size}
                                     color={color}
+                                    style={styles.tabImg}
                                 />
                             ),
                             headerTitleAlign: "center",
@@ -108,5 +115,18 @@ const styles = StyleSheet.create({
     tabText: {
         fontFamily: "pkmnem",
         fontSize: 15,
+    },
+    tabImg: {
+        height: 30,
+        width: 30,
+    },
+    eggImg: {
+        // marginBottom: 25,
+        height: 55,
+        width: 55,
+    },
+    ribbonImg: {
+        width: 70,
+        height: 70,
     },
 });
