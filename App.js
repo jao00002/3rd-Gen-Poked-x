@@ -107,5 +107,6 @@ const styles = StyleSheet.create({
     },
     tabText: {
         fontFamily: "pkmnem",
+        fontSize: 15,
     },
 });
