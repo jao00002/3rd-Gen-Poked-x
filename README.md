@@ -19,6 +19,11 @@
 -   TextInput
 -   ActivityIndicator
 
+### React Navigation:
+
+-   Stack Navigator
+-   Bottom Tab Navigator
+
 ## React API's Used:
 
 -   Alert
